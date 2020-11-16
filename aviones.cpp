@@ -11,7 +11,8 @@ struct Personas{
     string name;
     int ID;
     int Age;
-    int typeflight;
+    string comida;
+    string typeflight;
 }; using persona = struct Personas;
 
 struct Vuelo{
@@ -39,6 +40,40 @@ void AddVuelo(){
     getline(cin,flight.nombre);
 
     unVuelo.push_back(flight);
+}
+void AddPersona(){
+   bool primera = false;
+   bool ejecutiva = false;
+   bool turista = false;
+   persona viajero;
+   cout << "\nIngrese el nombre del pasajero: ";
+   getline(cin,viajero.name);
+   cout << "\nIngrese el DUI del pasajero: ";
+   cin >> viajero.ID;
+   cout << "\nIngrese la edad del pasajero: ";
+   cin >> viajero.Age;
+   cout<< "\nIngrese el tipo de vuelo del pasajero: ";
+   int opcion=0;
+   do {
+       cout << "\n1------------Primera Clase";
+       cout << "\n2------------Clase Ejecutiva";
+       cout << "\n3------------Clase Turista";
+       cin >> opcion;
+       switch (opcion){
+           case 1:
+                viajero.typeflight = "Primera Clase";
+                break;
+           case 2:
+                viajero.typeflight = "Clase Ejecutiva";
+                break;
+           case 3:
+                viajero.typeflight = "Clase Turista";
+                break;
+            default:
+            cout << "\nIngrese una opcion valida ";
+       }
+   } while (opcion<1 && opcion>3);
+   
 }
 
 int main(){
