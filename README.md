@@ -3,4 +3,4 @@
 Integrantes:
 
 Kevin Montano
-Jonathan Adriel Morales Orellana
+Jonathan Adriel Morales Orellana 00095520
