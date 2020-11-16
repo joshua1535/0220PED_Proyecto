@@ -24,7 +24,7 @@ struct Vuelo{
     queue<persona> Primera;
     queue<persona> Ejecutiva;
     queue<persona> Turista;
-}; using vuelo = struct Vuelo; vector<vuelo> unVuelo;
+}; using vuelo = struct Vuelo; vector<vuelo> Vuelos;
 
 void AddVuelo(){
     vuelo flight;
@@ -39,9 +39,10 @@ void AddVuelo(){
     cout << "\nIngrese nombre de referencia: ";
     getline(cin,flight.nombre);
 
-    unVuelo.push_back(flight);
+    Vuelos.push_back(flight);
 }
-void AddPersona(){
+
+persona AddPersona(){
    bool primera = false;
    bool ejecutiva = false;
    bool turista = false;
@@ -72,8 +73,57 @@ void AddPersona(){
             default:
             cout << "\nIngrese una opcion valida ";
        }
-   } while (opcion<1 && opcion>3);
-   
+   } while (opcion<1 || opcion>3);  
+
+   return viajero;
+}
+
+void Persona_a_Vuelo(){
+    persona unapersona = AddPersona();
+    string nombreVuelo;
+    int opcion=0;
+
+    if (Vuelos.empty())
+    {
+        cout << "No hay ningun vuelo registrado" << endl;
+        return;
+    }
+    
+    /*cout << "Ingrese el vuelo del pasajero "<< unapersona.name<<" : ";
+    for (int i=0;i<Vuelos.size();i++)
+    {
+        cout << i+1<<") "<<Vuelos.at(i).nombre<<endl;
+    }*/
+    do 
+    {
+        cout << "Ingrese el vuelo del pasajero "<< unapersona.name<<" : ";
+        for (int i=0;i<Vuelos.size();i++)
+        {
+        cout << i+1<<") "<<Vuelos.at(i).nombre<<endl;
+        }
+        cin >> opcion;cin.ignore(); 
+        opcion=opcion-1; 
+    }while(opcion<0 || opcion > Vuelos.size());
+    nombreVuelo = Vuelos.at(opcion).nombre;
+
+    for (int i = 0; Vuelos.size();i++)
+    {
+        if (nombreVuelo==Vuelos.at(i).nombre)
+        {
+            if (unapersona.typeflight=="Primera Clase")
+            {
+                Vuelos.at(i).Primera.push(unapersona);
+            }
+            else if (unapersona.typeflight=="Clase Ejecutiva")
+            {
+                Vuelos.at(i).Ejecutiva.push(unapersona);
+            }
+            else if (unapersona.typeflight=="Clase Turista")
+            {
+                Vuelos.at(i).Turista.push(unapersona);
+            }
+        }
+    }   
 }
 
 int main(){
@@ -97,11 +147,11 @@ int main(){
         switch (option)
         {
         case 1:
-            
+            AddVuelo();
             break;
         
         case 2:
-            
+            Persona_a_Vuelo();
             break;
 
         case 3:
