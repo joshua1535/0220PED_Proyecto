@@ -2,5 +2,6 @@
 
 Integrantes:
 
-Kevin Montano
+Kevin Joshua 
+Montano Martinez
 Jonathan Adriel Morales Orellana 00095520
