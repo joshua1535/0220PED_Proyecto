@@ -7,6 +7,13 @@
 
 using namespace std;
 
+struct Vuelo{
+    string partida;
+    string destino;
+    float despegue;
+    float hora;
+}; using vuelo = struct Vuelo;
+
 int main() 
 {
     bool status = true;
