@@ -4,6 +4,7 @@
 #include <queue>
 #include <vector>
 #include <stack>
+#include "Vuelos.hpp"
 
 using namespace std;
 
@@ -23,6 +24,42 @@ int main()
 
         int option;
         cout << "\n" << "Ingrese la opción del menú que desea ejecutar: ";
-        cin >> option; cin.ignore();   
+        cin >> option; cin.ignore();
+
+        switch (option)
+        {
+        case 1:
+            
+            break;
+        
+        case 2:
+            
+            break;
+
+        case 3:
+            
+            break;
+
+        case 4:
+            
+            break;
+        
+        case 5:
+            
+            break;
+
+        case 6:
+            
+            break;
+
+        case 7:
+            cout << "\nSaliendo del programa...";
+            return;
+            break;
+
+        default:
+            cout << "\nIngrese una opcion valida.";
+            break;
+        }   
     }
 }
