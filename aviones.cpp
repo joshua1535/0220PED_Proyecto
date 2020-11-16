@@ -4,12 +4,45 @@
 #include <queue>
 #include <vector>
 #include <stack>
-#include "Vuelos.hpp"
 
 using namespace std;
 
-int main() 
-{
+struct Personas{
+    string name;
+    int ID;
+    int Age;
+    int typeflight;
+}; using persona = struct Personas;
+
+struct Vuelo{
+    string partida;
+    string destino;
+    float despegue;
+    float hora;
+    string nombre;
+    queue<persona> Primera;
+    queue<persona> Ejecutiva;
+    queue<persona> Turista;
+}; using vuelo = struct Vuelo; vector<vuelo> unVuelo;
+
+void AddVuelo(){
+    vuelo flight;
+    cout << "\nIngrese el lugar de partida del vuelo: ";
+    getline(cin,flight.partida);
+    cout << "\nIngrese el lugar de destino: ";
+    getline(cin,flight.destino);
+    cout << "\nIngrese la hora de despegue: ";
+    cin >> flight.despegue;
+    cout << "\nIngrese la duracion del vuelo: ";
+    cin >> flight.hora; cin.ignore();
+    cout << "\nIngrese nombre de referencia: ";
+    getline(cin,flight.nombre);
+
+    unVuelo.push_back(flight);
+}
+
+int main(){
+
     bool status = true;
     while(status) 
     {
