@@ -3,4 +3,4 @@
 Integrantes:
 
 Kevin Montano
-Jonathan Morales
+Jonathan Adriel Morales Orellana
