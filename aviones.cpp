@@ -13,7 +13,7 @@ struct Personas{
     int Age;
     string comida;
     string typeflight;
-}; using persona = struct Personas;
+}; using persona = struct Personas; const persona invalid = {{" "},-1,-1,{" "},{" "}};
 
 struct Vuelo{
     string partida;
@@ -43,22 +43,39 @@ void AddVuelo(){
 }
 
 persona AddPersona(){
-   bool primera = false;
-   bool ejecutiva = false;
-   bool turista = false;
+
+    if (Vuelos.empty()){
+        cout << "\nNo hay ningun vuelo registrado!" << endl;
+        return invalid;
+    }
+
+   bool primera = false, ejecutiva = false, turista = false;
    persona viajero;
+
    cout << "\nIngrese el nombre del pasajero: ";
    getline(cin,viajero.name);
+
    cout << "\nIngrese el DUI del pasajero: ";
    cin >> viajero.ID;
+
    cout << "\nIngrese la edad del pasajero: ";
    cin >> viajero.Age;
-   cout<< "\nIngrese el tipo de vuelo del pasajero: ";
-   int opcion=0;
-   do {
-       cout << "\n1------------Primera Clase";
-       cout << "\n2------------Clase Ejecutiva";
-       cout << "\n3------------Clase Turista";
+
+   if (viajero.Age <= 0){
+       do{
+           cout << "Dato invalido!\n";
+           cout << "Ingrese la edad nuevamente: ";
+           cin >> viajero.Age; cin.ignore();
+       }while(viajero.Age <= 0);
+   }
+
+   int opcion = 0;
+   do{
+       cout << "\n\tA continuacion se le muestran las clases disponibles:";
+       cout << "\n\t1- Primera Clase.";
+       cout << "\n\t2- Clase Ejecutiva.";
+       cout << "\n\t3- Clase Turista.";
+       cout << "\n\n\tIngrese el tipo de vuelo del pasajero: ";
        cin >> opcion;
        switch (opcion){
            case 1:
@@ -73,7 +90,7 @@ persona AddPersona(){
             default:
             cout << "\nIngrese una opcion valida ";
        }
-   } while (opcion<1 || opcion>3);  
+   }while (opcion < 1 || opcion > 3);  
 
    return viajero;
 }
@@ -81,46 +98,35 @@ persona AddPersona(){
 void Persona_a_Vuelo(){
     persona unapersona = AddPersona();
     string nombreVuelo;
-    int opcion=0;
+    int opcion = 0;
 
-    if (Vuelos.empty())
-    {
-        cout << "No hay ningun vuelo registrado" << endl;
+    if(Vuelos.empty()){
         return;
     }
-    
-    /*cout << "Ingrese el vuelo del pasajero "<< unapersona.name<<" : ";
-    for (int i=0;i<Vuelos.size();i++)
-    {
-        cout << i+1<<") "<<Vuelos.at(i).nombre<<endl;
-    }*/
-    do 
-    {
-        cout << "Ingrese el vuelo del pasajero "<< unapersona.name<<" : ";
-        for (int i=0;i<Vuelos.size();i++)
-        {
-        cout << i+1<<") "<<Vuelos.at(i).nombre<<endl;
+
+    do{
+        cout << "\n---- Lista de vuelos ----\n";
+        for (int i=0;i<Vuelos.size();i++){
+        cout << i+1<<") "<< Vuelos.at(i).nombre << endl;
         }
+        cout << "\nIngrese el vuelo del pasajero ["<< unapersona.name<<"]: ";
         cin >> opcion;cin.ignore(); 
-        opcion=opcion-1; 
-    }while(opcion<0 || opcion > Vuelos.size());
+        opcion = opcion - 1; 
+    }while(opcion < 0 || opcion > Vuelos.size());
+
     nombreVuelo = Vuelos.at(opcion).nombre;
 
-    for (int i = 0; Vuelos.size();i++)
-    {
-        if (nombreVuelo==Vuelos.at(i).nombre)
-        {
-            if (unapersona.typeflight=="Primera Clase")
-            {
+    for (int i = 0; i < Vuelos.size(); i++){
+        if (nombreVuelo==Vuelos.at(i).nombre){
+            if (unapersona.typeflight=="Primera Clase"){
                 Vuelos.at(i).Primera.push(unapersona);
-            }
-            else if (unapersona.typeflight=="Clase Ejecutiva")
-            {
+                cout << "\nSe ha agregado con exito al pasajero.\n";
+            }else if (unapersona.typeflight=="Clase Ejecutiva"){
                 Vuelos.at(i).Ejecutiva.push(unapersona);
-            }
-            else if (unapersona.typeflight=="Clase Turista")
-            {
+                cout << "\nSe ha agregado con exito al pasajero.\n";
+            }else if (unapersona.typeflight=="Clase Turista"){
                 Vuelos.at(i).Turista.push(unapersona);
+                cout << "\nSe ha agregado con exito al pasajero.\n";
             }
         }
     }   
@@ -129,23 +135,21 @@ void Persona_a_Vuelo(){
 int main(){
 
     bool status = true;
-    while(status) 
-    {
-        cout << "********** MENU **********" << endl;
-        cout << "1. Ingresar un vuelo" << endl;
-        cout << "2. Ingresar datos de un pasajero" << endl;
-        cout << "3. Abordar pasajeros de un vuelo" << endl;
-        cout << "4. Eliminar pasajero de un vuelo" << endl;
-        cout << "5. Cancelar vuelo" << endl;
-        cout << "6. Mostrar datos de pasajeros de un vuelo" << endl;
-        cout << "7. Salir del programa" << endl;
+    while(status){
+        cout << "\n********** MENU **********\n";
+        cout << "1. Ingresar un vuelo.\n";
+        cout << "2. Ingresar datos de un pasajero.\n";
+        cout << "3. Abordar pasajeros de un vuelo.\n";
+        cout << "4. Eliminar pasajero de un vuelo.\n";
+        cout << "5. Cancelar vuelo.\n";
+        cout << "6. Mostrar datos de pasajeros de un vuelo.\n";
+        cout << "7. Salir del programa.\n";
 
         int option;
         cout << "\n" << "Ingrese la opción del menú que desea ejecutar: ";
         cin >> option; cin.ignore();
 
-        switch (option)
-        {
+        switch (option){
         case 1:
             AddVuelo();
             break;
@@ -172,7 +176,7 @@ int main(){
 
         case 7:
             cout << "\nSaliendo del programa...";
-            return;
+            status = false;
             break;
 
         default:
