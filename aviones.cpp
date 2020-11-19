@@ -59,17 +59,19 @@ void AddVuelo(){
         do{
             cout << "Dato inv" << char(160) << "lido!\n";
             cout << "\nIngrese la hora de despeque (formato 24h): ";
+            cin >> flight.despegue; cin.ignore();
         }while(flight.despegue < 0 || flight.despegue > 23);
     }
 
     cout << "\nIngrese la duraci" << char(162) << "n del vuelo: ";
     cin >> flight.hora; cin.ignore();
 
-    if(flight.hora < 0 || flight.hora > 20.00){
+    if(flight.hora <= 0 || flight.hora > 20.00){
         do{
             cout << "Dato inv" << char(160) << "lido!\n";
             cout << "\nIngrese la duraci" << char(162) << "n del vuelo: ";
-        }while(flight.hora < 0 || flight.hora > 20.00);
+            cin>>flight.hora;cin.ignore();
+        }while(flight.hora <= 0 || flight.hora > 20.00);
     }
 
     cout << "\nIngrese nombre de referencia: ";
@@ -411,110 +413,121 @@ void AbordViajeros(){
 }
 
 bool eliminarPrimera(int n, bool &fin){
-    queue<persona> auxiliar = Vuelos.at(0).Primera;
-    queue<persona> pivote;
 
-    if (Vuelos.at(0).Primera.empty()){
+    for (int i = 0; i < Vuelos.size(); i++)
+    {
+    queue <persona> auxiliar;
+    queue <persona> pivote;
+    auxiliar = Vuelos.at(i).Primera;
+
+    if (Vuelos.at(i).Primera.empty()){
         fin = true;
-        return fin;
+        //return fin;
     }
     else{
-        while(Vuelos.at(0).Primera.front().ID!=n && !Vuelos.at(0).Primera.empty()){
-            pivote.push(Vuelos.at(0).Primera.front());
-            Vuelos.at(0).Primera.pop();
+        while(Vuelos.at(i).Primera.front().ID!=n && !Vuelos.at(i).Primera.empty()){
+            pivote.push(Vuelos.at(i).Primera.front());
+            Vuelos.at(i).Primera.pop();
         }
-        if (Vuelos.at(0).Primera.empty()){
-            cout << "El pasajero no se encuentra en la base de datos de la Primera Clase" << "\n";
-            Vuelos.at(0).Primera = auxiliar;
+        if (Vuelos.at(i).Primera.empty()){
+            Vuelos.at(i).Primera = auxiliar;
             fin = true;
-            return fin;
+            //return fin;
         }
 
-        else if (Vuelos.at(0).Primera.front().ID==n){
+        else if (Vuelos.at(i).Primera.front().ID==n){
             cout << "Se eliminara al pasajero " << "\n";
-            cout <<Vuelos.at(0).Primera.front().ID<< " " << Vuelos.at(0).Primera.front().name<<"\n";
-            Vuelos.at(0).Primera.pop();
+            cout <<"Nombre: "<<Vuelos.at(i).Primera.front().name<< " DUI: " << Vuelos.at(i).Primera.front().ID<<"\n";
+            Vuelos.at(i).Primera.pop();
             cout << "Se elimino correctamente el pasajero!" << "\n";
             while (!pivote.empty()){
-                Vuelos.at(0).Primera.push(pivote.back());
+                Vuelos.at(i).Primera.push(pivote.back());
                 pivote.pop();      
             }
             fin = false;
             return fin;
         }
+    }       
     }
+    return fin;
 }
 
 bool eliminarEjecutiva(int n, bool &fin){
-    queue<persona> auxiliar = Vuelos.at(0).Ejecutiva;
+    for (int i = 0; i < Vuelos.size();i++)
+    {
+    queue<persona> auxiliar;
     queue<persona> pivote;
-
-    if (Vuelos.at(0).Ejecutiva.empty()){
+    auxiliar = Vuelos.at(i).Ejecutiva;
+    if (Vuelos.at(i).Ejecutiva.empty()){
         fin = true;
-        return fin;
+        //return fin;
     }
     else{
-
-        while(Vuelos.at(0).Ejecutiva.front().ID!=n && !Vuelos.at(0).Ejecutiva.empty()){
-            pivote.push(Vuelos.at(0).Ejecutiva.front());
-            Vuelos.at(0).Ejecutiva.pop();
+        while(Vuelos.at(i).Ejecutiva.front().ID!=n && !Vuelos.at(i).Ejecutiva.empty()){
+            pivote.push(Vuelos.at(i).Ejecutiva.front());
+            Vuelos.at(i).Ejecutiva.pop();
         }
-        if (Vuelos.at(0).Ejecutiva.empty()){
-            cout << "El pasajero no se encuentra en la base de datos de la Clase Ejecutiva" << "\n";
-            Vuelos.at(0).Ejecutiva = auxiliar;
+        if (Vuelos.at(i).Ejecutiva.empty()){
+            Vuelos.at(i).Ejecutiva = auxiliar;
             fin = true;
-            return fin;
+            //return fin;
         }
 
-        else if (Vuelos.at(0).Ejecutiva.front().ID==n){
+        else if (Vuelos.at(i).Ejecutiva.front().ID==n){
             cout << "Se eliminara al pasajero " << "\n";
-            cout <<Vuelos.at(0).Ejecutiva.front().ID<< " " << Vuelos.at(0).Ejecutiva.front().name<<"\n";
-            Vuelos.at(0).Ejecutiva.pop();
+            cout <<"Nombre: "<<Vuelos.at(i).Ejecutiva.front().name<< " DUI: " << Vuelos.at(i).Ejecutiva.front().ID<<"\n";
+            Vuelos.at(i).Ejecutiva.pop();
             cout << "Se elimino correctamente el pasajero!" << "\n";
             while (!pivote.empty()){
-                Vuelos.at(0).Ejecutiva.push(pivote.back());
+                Vuelos.at(i).Ejecutiva.push(pivote.back());
                 pivote.pop();
             }
             fin = false;
             return fin;
         }   
     }
+    }
+    return fin;
 }
 
 bool eliminarTurista(int n, bool &fin){
-    queue<persona> auxiliar = Vuelos.at(0).Turista;
-    queue<persona> pivote;
+    
 
-    if (Vuelos.at(0).Turista.empty()){
+    for (int i=0;i<Vuelos.size();i++)
+    {
+    queue<persona> auxiliar;
+    queue<persona> pivote;    
+    auxiliar = Vuelos.at(i).Turista;
+    if (Vuelos.at(i).Turista.empty()){
         fin = true;
-        return fin;
+        //return fin;
     }
     else{
-        while(Vuelos.at(0).Turista.front().ID!=n && !Vuelos.at(0).Turista.empty()){
-            pivote.push(Vuelos.at(0).Turista.front());
-            Vuelos.at(0).Turista.pop();
+        while(Vuelos.at(i).Turista.front().ID!=n && !Vuelos.at(i).Turista.empty()){
+            pivote.push(Vuelos.at(i).Turista.front());
+            Vuelos.at(i).Turista.pop();
         }
-        if (Vuelos.at(0).Turista.empty()){
-            cout << "El pasajero no se encuentra en la base de datos de la Clase Turista" << "\n";
-            Vuelos.at(0).Turista = auxiliar;
+        if (Vuelos.at(i).Turista.empty()){
+            Vuelos.at(i).Turista = auxiliar;
             fin = true;
-            return fin;
+            //return fin;
         }
 
-        else if (Vuelos.at(0).Turista.front().ID == n){
+        else if (Vuelos.at(i).Turista.front().ID == n){
             cout << "Se eliminara al pasajero: " << "\n";
-            cout <<Vuelos.at(0).Turista.front().ID<< " " << Vuelos.at(0).Turista.front().name<<"\n";
-            Vuelos.at(0).Turista.pop();
+            cout <<"Nombre: "<<Vuelos.at(i).Turista.front().name<< " DUI: " << Vuelos.at(i).Turista.front().ID<<"\n";
+            Vuelos.at(i).Turista.pop();
             cout << "Se elimino correctamente el pasajero!" << "\n";
             while (!pivote.empty()){
-                cout << "Agregando de nuevo a los pasajeros a la cola original " << pivote.front().name << " " << pivote.front().ID<< "\n";
-                Vuelos.at(0).Turista.push(pivote.back());
+                Vuelos.at(i).Turista.push(pivote.back());
                 pivote.pop();
             }
             fin = false;
             return fin;
         }
     }
+    }
+    return fin;
 }
 
 void CancelFlight(){
@@ -537,7 +550,7 @@ void CancelFlight(){
 
         for(int i = 0; i < Vuelos.size(); i++){
             if(NombreVuelo == Vuelos.at(i).nombre){
-                Vuelos.erase(Vuelos.begin() + (i-1));
+                Vuelos.erase(Vuelos.begin() + i);
                 cout << "El vuelo [" << NombreVuelo << "] a sido cancelado con " << char(130) << "xito.";
             }
         }
@@ -659,26 +672,35 @@ int main(){
                 break;
                 return 0;
             }
-            DUI = 0;
-            fin = true;
-            cout << "Ingrese el DUI de la persona que cancelo su viaje: ";
-            cin >> DUI;
-        
-            if (eliminarPrimera(DUI, fin) == false){
-                break;
-                return 0;
-            }
+            for (int i=0;Vuelos.size();i++)
+            {
+                if (Vuelos.at(i).Primera.empty()&&Vuelos.at(i).Ejecutiva.empty()&&Vuelos.at(i).Turista.empty())
+                {
+                    cout << "El vuelo "<<"["<<Vuelos.at(i).nombre<<"]"<<" no tiene ningun pasajero"<<endl;
+                }
+                else 
+                {
+                    DUI = 0;
+                    fin = true;
+                    cout << "Ingrese el DUI de la persona que cancelo su viaje: ";
+                    cin >> DUI;
 
-            if (eliminarEjecutiva(DUI,fin) == false){
-                break;
-                return 0;
-            }
+                    if (eliminarPrimera(DUI, fin) == false){
+                    break;
+                     return 0;
+                    }
 
-            if (eliminarTurista(DUI,fin) == false){
-                break;
-                return 0;
-            }
-            
+                    if (eliminarEjecutiva(DUI,fin) == false){
+                        break;
+                        return 0;
+                    }
+
+                    if (eliminarTurista(DUI,fin) == false){
+                        break;
+                        return 0;
+                    }
+                }
+            }          
             break;
         
         case 6:
