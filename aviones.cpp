@@ -666,17 +666,17 @@ int main(){
             cout << "Ingrese el DUI de la persona que cancelo su viaje: " << "\n";
             cin >> DUI;
         
-            //eliminarPrimera(DUI, fin);
+
             if (eliminarPrimera(DUI, fin)==false){
                 break;
                 return 0;
             }
-            //eliminarEjecutiva(DUI, fin);
+
              if (eliminarEjecutiva(DUI,fin)==false){
                 break;
                 return 0;
             }
-            //eliminarTurista(DUI, fin);
+
              if (eliminarTurista(DUI,fin)==false){
                 break;
                 return 0;
