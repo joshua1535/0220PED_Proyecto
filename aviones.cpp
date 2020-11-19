@@ -537,7 +537,7 @@ void CancelFlight(){
 
         for(int i = 0; i < Vuelos.size(); i++){
             if(NombreVuelo == Vuelos.at(i).nombre){
-                Vuelos.pop_back();
+                Vuelos.erase(Vuelos.begin() + (i-1));
                 cout << "El vuelo [" << NombreVuelo << "] a sido cancelado con " << char(130) << "xito.";
             }
         }
@@ -659,23 +659,22 @@ int main(){
                 break;
                 return 0;
             }
-            DUI=0;
-            fin=true;
-            cout << "Ingrese el DUI de la persona que cancelo su viaje: " << "\n";
+            DUI = 0;
+            fin = true;
+            cout << "Ingrese el DUI de la persona que cancelo su viaje: ";
             cin >> DUI;
         
-
             if (eliminarPrimera(DUI, fin) == false){
                 break;
                 return 0;
             }
 
-             if (eliminarEjecutiva(DUI,fin) == false){
+            if (eliminarEjecutiva(DUI,fin) == false){
                 break;
                 return 0;
             }
 
-             if (eliminarTurista(DUI,fin) == false){
+            if (eliminarTurista(DUI,fin) == false){
                 break;
                 return 0;
             }
