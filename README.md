@@ -44,14 +44,39 @@ __________________________________________________
 
 Solo dale click al archivo y el programa se ejecutará. Luego se desplegará el menú, el cual tiene Ocho Opciones:
 1.	Ingresar un Vuelo
-2.	Ingresar datos de un pasajero
-3.	Abordar pasajeros de un vuelo
-4.	Eliminar pasajero de un vuelo
-5.	Cancelar vuelo
-6.	Mostrar datos de pasajeros de un vuelo
-7.	Salir del programa
+2.  Mostrar Vuelos
+3.	Ingresar datos de un pasajero
+4.	Abordar pasajeros de un vuelo
+5.	Eliminar pasajero de un vuelo
+6.	Cancelar vuelo
+7.	Mostrar datos de pasajeros de un vuelo
+8.	Salir del programa
 
 ___________________________________________________
 3) Resumen de lo que hace el programa
 ___________________________________________________
-En Primer lugar, este programa es 
+
+En Primer lugar, este programa es para ayudar a las aerolineas para llevar un control, en los vuelos y pasajeros que abordan a los aviones.
+
+-La Primera opción es para registrar El vuelo que esta a punto de salir, su destino, a que horas partió, el tiempo estimado de vuelo y su nombre de referencia.
+
+-la segunda, complementa a la primera, ya que solo muestra los datos previamente ingresados, en el caso que no haya nada vuelos registrado, nos pedira que ingresemos un vuelo.
+
+-En ingresar datos de un pasajero, se pediran la documentación necesaria al pasajero, nombre, DUI, Edad, y se le presenta las opciones de Clases, las cuales son
+-Primera
+-Ejecutiva 
+-Turista
+Luego de haber seleccionado entre las tres clases, se abrira un menu de alimentos, lso cuales son diferentes dependiendo de la clase.
+
+-Luego de tener a los pasajeros, es necesario avisarles del abordaje a su respectivo avion, lo cual es necesario hacer su registro para evitar confusiones.
+
+-En caso de que algun pasajero no se presente a su vuelo, se podra eliminar de la lista.
+
+-Si sucede algo en la pista o en el mismo avión, hay una opcion donde se puede cancelar el vuelo.
+
+-En esta opcion, se mostrara los datos de aquellos pasajeros que se encuentren abordo del avion 
+
+
+
+
+
