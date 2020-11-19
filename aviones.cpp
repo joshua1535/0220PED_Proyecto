@@ -438,7 +438,7 @@ bool eliminarPrimera(int n, bool &fin){
             fin = true;
             //return fin;
         }
-        if (Vuelos.at(i).status=="*Abordado*"){
+        if (Vuelos.at(i).status=="*Abordado*" && Vuelos.at(i).Primera.front().ID == n){
             cout << "\nEl pasajero ya ha abordado un vuelo, no se puede eliminar" << "\n";
             fin = false;
             return fin;
@@ -480,7 +480,7 @@ bool eliminarEjecutiva(int n, bool &fin){
             fin = true;
             //return fin;
         }
-         if (Vuelos.at(i).status=="*Abordado*"){
+         if (Vuelos.at(i).status=="*Abordado*" && Vuelos.at(i).Ejecutiva.front().ID == n){
             cout << "\nEl pasajero ya ha abordado un vuelo, no se puede eliminar" << "\n";
             fin = false;
             return fin;
@@ -524,7 +524,7 @@ bool eliminarTurista(int n, bool &fin){
             fin = true;
             //return fin;
         }
-        if (Vuelos.at(i).status=="*Abordado*"){
+        if (Vuelos.at(i).status=="*Abordado*" && Vuelos.at(i).Turista.front().ID == n){
             cout << "\nEl pasajero ya ha abordado un vuelo, no se puede eliminar" << "\n";
             fin = false;
             return fin;
@@ -692,7 +692,7 @@ int main(){
                 break;
                 return 0;
             }
-            for (int i=0;Vuelos.size();i++)
+            for (int i=0; i < Vuelos.size();i++)
             {
                 if (Vuelos.at(i).Primera.empty()&&Vuelos.at(i).Ejecutiva.empty()&&Vuelos.at(i).Turista.empty())
                 {
@@ -719,8 +719,16 @@ int main(){
                         break;
                         return 0;
                     }
+
+                    else
+                    {
+                        cout << "\nEl Pasajero no se ha encontrado en el registro de vuelos.\n";
+                        break;
+                        return 0;
+                    }
+                    
                 }
-            }          
+            }        
             break;
         
         case 6:
