@@ -57,15 +57,15 @@ __________________________________________________
 4)Librerias utilizadas:
 __________________________________________________
 
-<iostream>
-<string>
-<Windows.h>
-<queue>
-<vector>
-<stack>
-<iomanip>
+1. iostream
+2. string
+3. Windows.h
+4. queue
+5. vector
+6. stack
+7. iomanip
 __________________________________________________
-5) Ejecución del programa:
+5) Ejecución del programa
 __________________________________________________
 
 El menú el de funciones del programa contiene Ocho Opciones:
@@ -78,26 +78,26 @@ El menú el de funciones del programa contiene Ocho Opciones:
 7.	Mostrar datos de pasajeros de un vuelo
 8.	Salir del programa
 ___________________________________________________
-6)Resumen de lo que hace el programa
+6) Resumen de lo que hace el programa
 ___________________________________________________
 
-En Primer lugar, este programa es para ayudar a las aerolineas para llevar un control, en los vuelos y pasajeros que abordan a los aviones.
+- En Primer lugar, este programa es para ayudar a las aerolineas para llevar un control, en los vuelos y pasajeros que abordan a los aviones.
 
--La Primera opción es para registrar el vuelo que esta a punto de salir, su destino, a que horas partió, el tiempo estimado de vuelo y su nombre de referencia.
+- La Primera opción es para registrar el vuelo que esta a punto de salir, su destino, a que horas partió, el tiempo estimado de vuelo y su nombre de referencia.
 
--la Segunda, complementa a la primera, ya que solo muestra los datos previamente ingresados, en el caso que no haya ningún vuelo registrado, nos mostraria un mensaje de error que no hay ningun vuelo registrado.
+- la Segunda, complementa a la primera, ya que solo muestra los datos previamente ingresados, en el caso que no haya ningún vuelo registrado, nos mostraria un mensaje de error que no hay ningun vuelo registrado.
 
--La Tercera opción, es de ingresar datos de un pasajero, se pediran la documentación necesaria al pasajero, nombre, DUI, Edad, y se le presenta las opciones de Clases, las cuales son
--Primera
--Ejecutiva 
--Turista
+- La Tercera opción, es de ingresar datos de un pasajero, se pediran la documentación necesaria al pasajero, nombre, DUI, Edad, y se le presenta las opciones de Clases, las cuales son:
+a) Primera
+b) Ejecutiva 
+c) Turista
 
--La Cuarta opción, consinste en que luego de tener a los pasajeros, es necesario avisarles del abordaje a su respectivo avion, se les abrirá un menu de alimentos, los cuales son diferentes dependiendo de la clase.
+- La Cuarta opción, consinste en que luego de tener a los pasajeros, es necesario avisarles del abordaje a su respectivo avion, se les abrirá un menu de alimentos, los cuales son diferentes dependiendo de la clase.
 
--La Quinta opción, es en caso de que sea necesario eliminar a un pasajero del vuelo que tenia programado.
+- La Quinta opción, es en caso de que sea necesario eliminar a un pasajero del vuelo que tenia programado.
 
--La Sexta opción, es en caso de que suceda algo en la pista, en el mismo avión o alguna causa meteorológica, se da la opción que se pueda cancelar el vuelo.
+- La Sexta opción, es en caso de que suceda algo en la pista, en el mismo avión o alguna causa meteorológica, se da la opción que se pueda cancelar el vuelo.
 
--La Septima opción, mostrará los datos de aquellos pasajeros que se encuentren registrados en algun vuelo programado.
+- La Septima opción, mostrará los datos de aquellos pasajeros que se encuentren registrados en algun vuelo programado.
 
 - La última opción es para salir del programa.
