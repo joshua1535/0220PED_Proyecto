@@ -423,9 +423,9 @@ bool eliminarPrimera(int n, bool &fin){
     }
     fin = false;
   return fin;
-}
-     }
+        }
     }
+}
    
   
    
@@ -461,9 +461,9 @@ bool eliminarEjecutiva(int n, bool &fin){
     }
     fin = false;
   return fin;
-}
-     }
+        }   
     }
+}
 bool eliminarTurista(int n, bool &fin){
     queue<persona> auxiliar = Vuelos.at(0).Turista;
      queue<persona> pivote;
@@ -497,9 +497,9 @@ bool eliminarTurista(int n, bool &fin){
     }
     fin = false;
   return fin;
-}
+        }
     }
-     }
+}
 
 void CancelFlight(){
     if(Vuelos.empty()){
