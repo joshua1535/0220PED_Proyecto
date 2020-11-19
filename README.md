@@ -17,8 +17,10 @@ __________________________________________________
 INDICE:
 
 1) Requisitos del sistema
-2) Ejecucion del programa
-3) Resumen de lo que hace el programa
+2) Descripcion del proyecto
+3) Estructuras utilizadas
+4) Funciones que integra el programa
+5) Resumen de lo que hace el programa
 __________________________________________________
 1) Requisitos del sistema
 __________________________________________________
@@ -39,10 +41,22 @@ Estos son los mínimos requisitos del sistema que utiliza Dev-C++:
 - Procesador compatible Intel a 400
 - 200 MB de espacio libre en el disco duro
 __________________________________________________
-2) Ejecución del programa:
+2)Descripcion del proyecto:
+__________________________________________________
+El siguiente proyecto es un programa para llevar un control de vuelos de un aeropuerto y de los pasajeros que
+corresponden a cada uno de los vuelos.
+
+__________________________________________________
+3)Estructuras utilizadas:
+__________________________________________________
+1. Colas
+2. Listas simplemente enlazadas
+
+__________________________________________________
+4) Ejecución del programa:
 __________________________________________________
 
-Solo dale click al archivo y el programa se ejecutará. Luego se desplegará el menú, el cual tiene Ocho Opciones:
+El menú el de funciones del programa contiene Ocho Opciones:
 1.	Ingresar un Vuelo
 2.  Mostrar Vuelos
 3.	Ingresar datos de un pasajero
@@ -53,28 +67,29 @@ Solo dale click al archivo y el programa se ejecutará. Luego se desplegará el 
 8.	Salir del programa
 
 ___________________________________________________
-3) Resumen de lo que hace el programa
+5)Resumen de lo que hace el programa
 ___________________________________________________
 
 En Primer lugar, este programa es para ayudar a las aerolineas para llevar un control, en los vuelos y pasajeros que abordan a los aviones.
 
--La Primera opción es para registrar El vuelo que esta a punto de salir, su destino, a que horas partió, el tiempo estimado de vuelo y su nombre de referencia.
+-La Primera opción es para registrar el vuelo que esta a punto de salir, su destino, a que horas partió, el tiempo estimado de vuelo y su nombre de referencia.
 
--la segunda, complementa a la primera, ya que solo muestra los datos previamente ingresados, en el caso que no haya nada vuelos registrado, nos pedira que ingresemos un vuelo.
+-la Segunda, complementa a la primera, ya que solo muestra los datos previamente ingresados, en el caso que no haya ningún vuelo registrado, nos mostraria un mensaje de error que no hay ningun vuelo registrado.
 
--En ingresar datos de un pasajero, se pediran la documentación necesaria al pasajero, nombre, DUI, Edad, y se le presenta las opciones de Clases, las cuales son
+-La Tercera opción, es de ingresar datos de un pasajero, se pediran la documentación necesaria al pasajero, nombre, DUI, Edad, y se le presenta las opciones de Clases, las cuales son
 -Primera
 -Ejecutiva 
 -Turista
-Luego de haber seleccionado entre las tres clases, se abrira un menu de alimentos, lso cuales son diferentes dependiendo de la clase.
 
--Luego de tener a los pasajeros, es necesario avisarles del abordaje a su respectivo avion, lo cual es necesario hacer su registro para evitar confusiones.
+-La Cuarta opción, consinste en que luego de tener a los pasajeros, es necesario avisarles del abordaje a su respectivo avion, se les abrirá un menu de alimentos, los cuales son diferentes dependiendo de la clase.
 
--En caso de que algun pasajero no se presente a su vuelo, se podra eliminar de la lista.
+-La Quinta opción, es en caso de que sea necesario eliminar a un pasajero del vuelo que tenia programado.
 
--Si sucede algo en la pista o en el mismo avión, hay una opcion donde se puede cancelar el vuelo.
+-La Sexta opción, es en caso de que suceda algo en la pista, en el mismo avión o alguna causa meteorológica, se da la opción que se pueda cancelar el vuelo.
 
--En esta opcion, se mostrara los datos de aquellos pasajeros que se encuentren abordo del avion 
+-La Septima opción, mostrará los datos de aquellos pasajeros que se encuentren registrados en algun vuelo programado.
+
+- La última opción es para salir del programa.
 
 
 
