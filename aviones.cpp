@@ -88,19 +88,19 @@ void AddVuelo(){
         aux2 = flight.hora * 100;
         mod2 = aux2 % 100; 
         mod2 = mod2/100;
-        if (hour2 > 23 || hour2 < 0)
+        if (hour2 > 20 || hour2 < 0)
         {
-            cout << "Dato inv" << char(160) << "lido!\n";
+            cout << "\nDato inv" << char(160) << "lido!\n";
         }
         else if (mod2 > 0.59)
         {
-            cout << "Dato inv" << char(160) << "lido!\n";
+            cout << "\nDato inv" << char(160) << "lido!\n";
         }  
         else if (mod2 >= 0.00 && mod2 < 0.60)
         {
             flight.hora = hour2 + mod2;
         }
-    }while(((mod2 < 0.00 || mod2 > 0.59)||(hour2 > 23 || hour2 < 0)));
+    }while(((mod2 < 0.00 || mod2 > 0.59)||(hour2 > 20 || hour2 < 0)));
 
     cout << "\nIngrese nombre de referencia: ";
     getline(cin,flight.nombre);
@@ -125,9 +125,9 @@ void MostrarInfoVuelos(){
         for(int i = 0; i < Vuelos.size(); i++ ){
             cout << "\nLugar de Partida: " << Vuelos.at(i).partida;
             cout << "\nLugar de Destino: " << Vuelos.at(i).destino;
-            cout << "\nHora de Despegue: "<<fixed<<setprecision(2)<<Vuelos.at(i).despegue << " horas.";
+            cout << "\nHora de Despegue: " << fixed << setprecision(2) << Vuelos.at(i).despegue << " horas.";
             //cout << "\nHora de Despegue: " << Vuelos.at(i).despegue;
-            cout << "\nDuraci" << char(162) << "n del vuelo: " <<fixed<<setprecision(2)<< Vuelos.at(i).hora<<" horas."; 
+            cout << "\nDuraci" << char(162) << "n del vuelo: " << fixed << setprecision(2) << Vuelos.at(i).hora<<" horas."; 
             cout << "\nNombre de Referencia: " << Vuelos.at(i).nombre;
             cout << "\nEstado: " << Vuelos.at(i).status << endl;
 
@@ -384,6 +384,10 @@ void AbordViajeros(){
 
             if(option < 0 || option >= Vuelos.size()){
             cout << "\nIngrese una opci"<< char(162) << "n valida.";
+            }
+            if (Vuelos.at(option).status=="*Abordado*"){
+            cout << "\nEste vuelo ya ha sido abordado";
+            return;
         }
         }while(option < 0 || option >= Vuelos.size());
 
