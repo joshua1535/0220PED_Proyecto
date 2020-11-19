@@ -187,6 +187,10 @@ void Persona_a_Vuelo(){
         if(opcion < 0 || opcion >= Vuelos.size()){
             cout << "\nIngrese una opci"<< char(162) << "n valida.";
         } 
+        if (Vuelos.at(opcion).status=="*Abordado*"){
+            cout << "\nEste vuelo ya ha sido abordado";
+            return;
+        }
     }while(opcion < 0 || opcion >= Vuelos.size());
 
     nombreVuelo = Vuelos.at(opcion).nombre;
@@ -434,7 +438,11 @@ bool eliminarPrimera(int n, bool &fin){
             fin = true;
             //return fin;
         }
-
+        if (Vuelos.at(i).status=="*Abordado*"){
+            cout << "\nEl pasajero ya ha abordado un vuelo, no se puede eliminar" << "\n";
+            fin = false;
+            return fin;
+        }
         else if (Vuelos.at(i).Primera.front().ID==n){
             cout << "Se eliminara al pasajero " << "\n";
             cout <<"Nombre: "<<Vuelos.at(i).Primera.front().name<< " DUI: " << Vuelos.at(i).Primera.front().ID<<"\n";
@@ -443,11 +451,11 @@ bool eliminarPrimera(int n, bool &fin){
             while (!pivote.empty()){
                 Vuelos.at(i).Primera.push(pivote.back());
                 pivote.pop();      
-            }
+                }
             fin = false;
             return fin;
-        }
-    }       
+            }
+        }       
     }
     return fin;
 }
@@ -472,7 +480,11 @@ bool eliminarEjecutiva(int n, bool &fin){
             fin = true;
             //return fin;
         }
-
+         if (Vuelos.at(i).status=="*Abordado*"){
+            cout << "\nEl pasajero ya ha abordado un vuelo, no se puede eliminar" << "\n";
+            fin = false;
+            return fin;
+        }
         else if (Vuelos.at(i).Ejecutiva.front().ID==n){
             cout << "Se eliminara al pasajero " << "\n";
             cout <<"Nombre: "<<Vuelos.at(i).Ejecutiva.front().name<< " DUI: " << Vuelos.at(i).Ejecutiva.front().ID<<"\n";
@@ -481,11 +493,11 @@ bool eliminarEjecutiva(int n, bool &fin){
             while (!pivote.empty()){
                 Vuelos.at(i).Ejecutiva.push(pivote.back());
                 pivote.pop();
-            }
+                }
             fin = false;
             return fin;
-        }   
-    }
+            }   
+        }
     }
     return fin;
 }
@@ -512,7 +524,11 @@ bool eliminarTurista(int n, bool &fin){
             fin = true;
             //return fin;
         }
-
+        if (Vuelos.at(i).status=="*Abordado*"){
+            cout << "\nEl pasajero ya ha abordado un vuelo, no se puede eliminar" << "\n";
+            fin = false;
+            return fin;
+        }
         else if (Vuelos.at(i).Turista.front().ID == n){
             cout << "Se eliminara al pasajero: " << "\n";
             cout <<"Nombre: "<<Vuelos.at(i).Turista.front().name<< " DUI: " << Vuelos.at(i).Turista.front().ID<<"\n";
@@ -521,11 +537,11 @@ bool eliminarTurista(int n, bool &fin){
             while (!pivote.empty()){
                 Vuelos.at(i).Turista.push(pivote.back());
                 pivote.pop();
-            }
+                }
             fin = false;
             return fin;
+            }
         }
-    }
     }
     return fin;
 }
@@ -539,19 +555,23 @@ void CancelFlight(){
         do{
             cout << "\n---- Lista de vuelos ----\n";
             for (int i = 0; i < Vuelos.size(); i++){
-            cout << i + 1 << ") "<< Vuelos.at(i).nombre << endl;
+            cout << i + 1 << ") "<<"El vuelo "<< Vuelos.at(i).nombre << " se encuentra "<< Vuelos.at(i).status << endl;
             }
             cout << "\nIngrese el vuelo que desea cancelar: ";
             cin >> op; cin.ignore(); 
             op = op - 1; 
+            if (Vuelos.at(op).status=="*Abordado*"){
+            cout << "\nEste vuelo ya ha sido abordado";
+            return;
+            }
         }while(op < 0 || op >= Vuelos.size());
-
+         
         string NombreVuelo = Vuelos.at(op).nombre;
 
         for(int i = 0; i < Vuelos.size(); i++){
             if(NombreVuelo == Vuelos.at(i).nombre){
                 Vuelos.erase(Vuelos.begin() + i);
-                cout << "El vuelo [" << NombreVuelo << "] a sido cancelado con " << char(130) << "xito.";
+                cout << "El vuelo [" << NombreVuelo << "] ha sido cancelado con " << char(130) << "xito.";
             }
         }
     }
@@ -566,7 +586,7 @@ void ShowViajeros(){
         do{
             cout << "\n---- Lista de vuelos ----\n";
             for (int i = 0; i < Vuelos.size(); i++){
-            cout << i + 1 << ") "<< Vuelos.at(i).nombre << "\t" << Vuelos.at(i).status << endl;
+            cout << i + 1 << ") "<< "El vuelo "<< Vuelos.at(i).nombre << " se encuentra " << Vuelos.at(i).status << endl;
             }
             cout << "\nIngrese el vuelo del cual desea ver los datos de los pasajeros: ";
             cin >> option; cin.ignore(); 
