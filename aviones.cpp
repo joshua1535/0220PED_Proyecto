@@ -186,6 +186,212 @@ void Persona_a_Vuelo(){
         }
     }   
 }
+
+vuelo FoodMenu(vuelo FlightFood, vuelo Clone){
+    int opcionP = 0; int opcionE = 0; int opcionT = 0;
+    queue<persona> PrimeraC, EjecutivaC, TuristaC; 
+
+        do{
+            while(!FlightFood.Primera.empty()){
+                persona UnaPersona;
+                cout << "\n\t---- MEN" << char(233) << " Comida ----";
+                cout << "\n\t1- Primera Opcion 01.\n\t2- Primera Opcion 02.\n\t3- Primera Opcion 03.";
+
+                cout << "\n\tIngrese al opci" << char(162) << "n que desea para el pasajero [" << FlightFood.Primera.front().name << "]: ";
+                cin >> opcionP; cin.ignore();
+
+                switch (opcionP){
+                case 1:
+                    FlightFood.Primera.front().comida = "Primera Opcion 01";
+                    UnaPersona = FlightFood.Primera.front();
+                    FlightFood.Primera.pop();
+                    PrimeraC.push(UnaPersona);
+                    break;
+                    
+                case 2:
+                    FlightFood.Primera.front().comida = "Primera Opcion 02";
+                    UnaPersona = FlightFood.Primera.front();
+                    FlightFood.Primera.pop();
+                    PrimeraC.push(UnaPersona);
+                    break;
+
+                case 3:
+                    FlightFood.Primera.front().comida = "Primera Opcion 03";
+                    UnaPersona = FlightFood.Primera.front();
+                    FlightFood.Primera.pop();
+                    PrimeraC.push(UnaPersona);
+                    break;
+
+                default:
+                    cout << "\nIngrese una opci"<< char(162) << "n valida."; 
+                    break;
+                }
+            }
+        }while(opcionP < 0 || opcionP > 3);
+
+        Clone.Primera = PrimeraC;
+
+        do{
+            while(!FlightFood.Ejecutiva.empty()){
+                persona UnaPersonaE;
+                cout << "\n\t---- MEN" << char(233) << " Comida ----";
+                cout << "\n\t1- Opcion Ejecutiva 01.\n\t2- Opcion Ejecutiva 02.\n\t3- Opcion Ejecutiva 03.";
+
+                cout << "\n\tIngrese al opci" << char(162) <<"n que desea para el pasajero [" << FlightFood.Ejecutiva.front().name << "]: ";
+                cin >> opcionE; cin.ignore();
+
+                switch (opcionE){
+                case 1:
+                    FlightFood.Ejecutiva.front().comida = "Opcion Ejecutiva 01";
+                    UnaPersonaE = FlightFood.Ejecutiva.front();
+                    FlightFood.Ejecutiva.pop();
+                    EjecutivaC.push(UnaPersonaE);
+                    break;
+                    
+                case 2:
+                    FlightFood.Ejecutiva.front().comida = "Opcion Ejecutiva 02";
+                    UnaPersonaE = FlightFood.Ejecutiva.front();
+                    FlightFood.Ejecutiva.pop();
+                    EjecutivaC.push(UnaPersonaE);
+                    break;
+
+                case 3:
+                    FlightFood.Ejecutiva.front().comida = "Opcion Ejecutiva 03";
+                    UnaPersonaE = FlightFood.Ejecutiva.front();
+                    FlightFood.Ejecutiva.pop();
+                    EjecutivaC.push(UnaPersonaE);
+                    break;
+
+                default:
+                    cout << "\nIngrese una opci"<< char(162) << "n valida.";
+                    break;
+                }
+            }
+        }while(opcionE < 0 || opcionE > 3);
+
+        Clone.Ejecutiva = EjecutivaC;
+
+        do{
+            while(!FlightFood.Turista.empty()){
+                persona UnaPersonaT;
+                cout << "\n\t---- MEN" << char(233) << " Comida ----";
+                cout << "\n\t1- Opcion Turista 01.\n\t2- Opcion Turista 02.\n\t3- Opcion Turista 03.";
+
+                cout << "\n\tIngrese al opci" << char(162) <<"n que desea para el pasajero [" << FlightFood.Turista.front().name << "]: ";
+                cin >> opcionT; cin.ignore();
+
+                switch (opcionT){
+                case 1:
+                    FlightFood.Turista.front().comida = "Opcion Turista 01";
+                    UnaPersonaT = FlightFood.Turista.front();
+                    FlightFood.Turista.pop();
+                    TuristaC.push(UnaPersonaT);
+                    break;
+                    
+                case 2:
+                    FlightFood.Turista.front().comida = "Opcion Turista 02";
+                    UnaPersonaT = FlightFood.Turista.front();
+                    FlightFood.Turista.pop();
+                    TuristaC.push(UnaPersonaT);
+                    break;
+
+                case 3:
+                    FlightFood.Turista.front().comida = "Opcion Turista 03";
+                    UnaPersonaT = FlightFood.Turista.front();
+                    FlightFood.Turista.pop();
+                    TuristaC.push(UnaPersonaT);
+                    break;
+
+                default:
+                    cout << "\nIngrese una opci"<< char(162) << "n valida.";
+                    break;
+                }
+            }
+        }while(opcionT < 0 || opcionT > 3);
+
+        Clone.Turista = TuristaC;
+
+        return Clone;
+}
+
+void AbordViajeros(){
+    if(Vuelos.empty()){
+        cout << "\nNo hay ning"<< char(163) << "n vuelo registrado!";
+        return;
+    }else{
+        int option = 0;
+        do{
+            cout << "\n---- Lista de vuelos ----\n";
+            for (int i = 0; i < Vuelos.size(); i++){
+            cout << i + 1 << ") "<< Vuelos.at(i).nombre << endl;
+            }
+            cout << "\nIngrese el vuelo que desea para abordar a los pasajeros: ";
+            cin >> option; cin.ignore(); 
+            option = option - 1; 
+
+            if(option < 0 || option >= Vuelos.size()){
+            cout << "\nIngrese una opci"<< char(162) << "n valida.";
+        }
+        }while(option < 0 || option >= Vuelos.size());
+
+        string FlightName = Vuelos.at(option).nombre;
+
+        for (int i = 0; i < Vuelos.size(); i++){
+            if (FlightName == Vuelos.at(i).nombre){
+                queue<persona> AuxPrimera = Vuelos.at(i).Primera, AuxEjecutiva = Vuelos.at(i).Ejecutiva, AuxTurista = Vuelos.at(i).Turista;
+                vuelo FlightFood = Vuelos.at(i), Clone = Vuelos.at(i);
+
+                if(AuxPrimera.empty() && AuxEjecutiva.empty() && AuxTurista.empty()){
+                    cout << "\nNo hay ning" << char(163) << "n pasajero registrado en este vuelo.\n";
+                    return;
+                }
+
+                cout << "\n---- Abordando a los pasajeros del vuelo [" << FlightName << "] ----\n";
+                cout << "\nPrimera Clase:\n";
+                if (AuxPrimera.empty()){
+                    cout << "\nNo hay pasajeros registrados en esta clase.\n";
+                }
+                while(!AuxPrimera.empty()){
+                    Sleep(25);
+                    cout << "\nNombre: " << AuxPrimera.front().name;
+                    cout << "\nDUI: " << AuxPrimera.front().ID;
+                    cout << "\nEdad: " << AuxPrimera.front().Age << " a" << char(164) <<"os.";
+                    cout << "\nClase: " << AuxPrimera.front().typeflight;
+                    AuxPrimera.pop();
+                }
+
+                cout << "\n\nClase Ejecutiva:\n";
+                if (AuxEjecutiva.empty()){
+                    cout << "\nNo hay pasajeros registrados en esta clase.\n";
+                }
+                while(!AuxEjecutiva.empty()){
+                    Sleep(25);
+                    cout << "\nNombre: " << AuxEjecutiva.front().name;
+                    cout << "\nDUI: " << AuxEjecutiva.front().ID;
+                    cout << "\nEdad: " << AuxEjecutiva.front().Age << " a" << char(164) <<"os.";
+                    cout << "\nClase: " << AuxEjecutiva.front().typeflight;
+                    AuxEjecutiva.pop();
+                }
+
+                cout << "\n\nClase Turista:\n";
+                if (AuxTurista.empty()){
+                    cout << "\nNo hay pasajeros registrados en esta clase.\n";
+                }
+                while(!AuxTurista.empty()){
+                    Sleep(25);
+                    cout << "\nNombre: " << AuxTurista.front().name;
+                    cout << "\nDUI: " << AuxTurista.front().ID;
+                    cout << "\nEdad: " << AuxTurista.front().Age << " a" << char(164) <<"os.";
+                    cout << "\nClase: " << AuxTurista.front().typeflight;
+                    AuxTurista.pop();
+                }
+                Vuelos.at(i) = FoodMenu(FlightFood, Clone);
+                Vuelos.at(i).status = "*Abordado*";
+            }
+        } 
+    }
+}
+
 bool eliminarPrimera(int n, bool &fin){
     queue<persona> auxiliar = Vuelos.at(0).Primera;
     queue<persona> pivote;
@@ -295,6 +501,107 @@ int eliminarTurista(int n, bool &fin){
     }
      }
 
+void CancelFlight(){
+    if(Vuelos.empty()){
+        cout << "\nNo hay ning"<< char(163) << "n vuelo registrado!";
+        return;
+    }else{
+        int op = 0;
+        do{
+            cout << "\n---- Lista de vuelos ----\n";
+            for (int i = 0; i < Vuelos.size(); i++){
+            cout << i + 1 << ") "<< Vuelos.at(i).nombre << endl;
+            }
+            cout << "\nIngrese el vuelo que desea cancelar: ";
+            cin >> op; cin.ignore(); 
+            op = op - 1; 
+        }while(op < 0 || op >= Vuelos.size());
+
+        string NombreVuelo = Vuelos.at(op).nombre;
+
+        for(int i = 0; i < Vuelos.size(); i++){
+            if(NombreVuelo == Vuelos.at(i).nombre){
+                Vuelos.pop_back();
+                cout << "El vuelo [" << NombreVuelo << "] a sido cancelado con " << char(130) << "xito.";
+            }
+        }
+    }
+}
+
+void ShowViajeros(){
+    if(Vuelos.empty()){
+        cout << "\nNo hay ning"<< char(163) << "n vuelo registrado!";
+        return;
+    }else{
+        int option = 0;
+        do{
+            cout << "\n---- Lista de vuelos ----\n";
+            for (int i = 0; i < Vuelos.size(); i++){
+            cout << i + 1 << ") "<< Vuelos.at(i).nombre << "\t" << Vuelos.at(i).status << endl;
+            }
+            cout << "\nIngrese el vuelo del cual desea ver los datos de los pasajeros: ";
+            cin >> option; cin.ignore(); 
+            option = option - 1; 
+        }while(option < 0 || option >= Vuelos.size());
+
+        string FlightName = Vuelos.at(option).nombre;
+
+        for (int i = 0; i < Vuelos.size(); i++){
+            if (FlightName == Vuelos.at(i).nombre){
+                queue<persona> ClonePrimera = Vuelos.at(i).Primera, CloneEjecutiva = Vuelos.at(i).Ejecutiva, CloneTurista = Vuelos.at(i).Turista;
+
+                if(ClonePrimera.empty() && CloneEjecutiva.empty() && CloneTurista.empty()){
+                    cout << "\nNo hay ning" << char(163) << "n pasajero registrado en este vuelo.\n";
+                    return;
+                }
+
+                cout << "\n---- Mostrando los datos de los pasajeros del vuelo [" << FlightName << "] ----\n";
+                cout << "\nPasajeros de Primera Clase:\n";
+                if (ClonePrimera.empty()){
+                    cout << "\nNo hay pasajeros registrados en esta clase.\n";
+                }
+                while(!ClonePrimera.empty()){
+                    Sleep(100);
+                    cout << "\nNombre: " << ClonePrimera.front().name;
+                    cout << "\nDUI: " << ClonePrimera.front().ID;
+                    cout << "\nEdad: " << ClonePrimera.front().Age << " a" << char(164) <<"os.";
+                    cout << "\nClase: " << ClonePrimera.front().typeflight;
+                    cout << "\nComida: " << ClonePrimera.front().comida << endl;
+                    ClonePrimera.pop();
+                }
+
+                cout << "\n\nPasajeros de Clase Ejecutiva:\n";
+                if (CloneEjecutiva.empty()){
+                    cout << "\nNo hay pasajeros registrados en esta clase.\n";
+                }
+                while(!CloneEjecutiva.empty()){
+                    Sleep(150);
+                    cout << "\nNombre: " << CloneEjecutiva.front().name;
+                    cout << "\nDUI: " << CloneEjecutiva.front().ID;
+                    cout << "\nEdad: " << CloneEjecutiva.front().Age << " a" << char(164) <<"os.";
+                    cout << "\nClase: " << CloneEjecutiva.front().typeflight;
+                    cout << "\nComida: " << CloneEjecutiva.front().comida << endl;
+                    CloneEjecutiva.pop();
+                }
+
+                cout << "\n\nPasajeros de Clase Turista:\n";
+                if (CloneTurista.empty()){
+                    cout << "\nNo hay pasajeros registrados en esta clase.\n";
+                }
+                while(!CloneTurista.empty()){
+                    Sleep(200);
+                    cout << "\nNombre: " << CloneTurista.front().name;
+                    cout << "\nDUI: " << CloneTurista.front().ID;
+                    cout << "\nEdad: " << CloneTurista.front().Age << " a" << char(164) <<"os.";
+                    cout << "\nClase: " << CloneTurista.front().typeflight;
+                    cout << "\nComida: " << CloneTurista.front().comida << endl;
+                    CloneTurista.pop();
+                }
+            }
+        } 
+    }
+}
+
 int main(){
     int DUI=0;
     bool fin=true;
@@ -324,10 +631,10 @@ int main(){
             break;
 
         case 3:
-            
+            AbordViajeros();
             break;
 
-        case 4: 
+        case 4:
             DUI=0;
             fin=true;
             cout << "Ingrese el DUI de la persona que cancelo su viaje: " << "\n";
@@ -352,11 +659,11 @@ int main(){
             break;
         
         case 5:
-            
+            CancelFlight();
             break;
 
         case 6:
-            
+            ShowViajeros();
             break;
 
         case 7:
