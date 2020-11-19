@@ -86,19 +86,19 @@ void AddVuelo(){
     Vuelos.push_back(flight);
 }
 
-void MostrarVuelo(){
+void MostrarInfoVuelos(){
     if(Vuelos.empty()){
         cout<<"\nNo hay ning"<<char(163)<<"n vuelo registrado"<<endl;
         return;
     }else{
-        cout << "\n---- Lista de Vuelo ----\n ";
+        cout << "\n---- Lista de Vuelos ----\n ";
         for(int i = 0; i < Vuelos.size(); i++ ){
-            cout << "\nLugar de Partida : " << Vuelos.at(i).partida;
-            cout << "\nLugar de Destino :" << Vuelos.at(i).destino;
-            cout << "\nHora de Despegue :" << Vuelos.at(i).despegue;
-            cout << "\nDuración del vuelo : " << Vuelos.at(i).hora<<" h "; 
-            cout << "\nNombre de Referencia : " << Vuelos.at(i).nombre;
-            cout << "\n" << Vuelos.at(i).status;
+            cout << "\nLugar de Partida: " << Vuelos.at(i).partida;
+            cout << "\nLugar de Destino: " << Vuelos.at(i).destino;
+            cout << "\nHora de Despegue: " << Vuelos.at(i).despegue;
+            cout << "\nDuraci" << char(162) << "n del vuelo: " << Vuelos.at(i).hora<<" horas."; 
+            cout << "\nNombre de Referencia: " << Vuelos.at(i).nombre;
+            cout << "\nEstado: " << Vuelos.at(i).status << endl;
 
         }
     }
@@ -626,7 +626,7 @@ int main(){
     while(status){
         cout << "\n\n********** MEN" << char(233) << " **********\n";
         cout << "1. Ingresar un vuelo.\n";
-        cout << "2. Mostrar Vuelos.\n";
+        cout << "2. Mostrar Informaci"<< char(162) << "n de Vuelos.\n";
         cout << "3. Ingresar datos de un pasajero.\n";
         cout << "4. Abordar pasajeros de un vuelo.\n";
         cout << "5. Eliminar pasajero de un vuelo.\n";
@@ -643,7 +643,7 @@ int main(){
             AddVuelo();
             break;
         case 2:
-            MostrarVuelo();
+            MostrarInfoVuelos();
             break;
         case 3:
             Persona_a_Vuelo();
