@@ -25,7 +25,7 @@ struct Vuelo{
     queue<persona> Primera;
     queue<persona> Ejecutiva;
     queue<persona> Turista;
-}; using vuelo = struct Vuelo; vector<vuelo> Vuelos;
+}; using vuelo = struct Vuelo; vector<vuelo> Vuelos; 
 
 void AddVuelo(){
     vuelo flight;
@@ -84,6 +84,24 @@ void AddVuelo(){
    }
 
     Vuelos.push_back(flight);
+}
+
+void MostrarVuelo(){
+    if(Vuelos.empty()){
+        cout<<"\nNo hay ning"<<char(163)<<"n vuelo registrado"<<endl;
+        return;
+    }else{
+        cout << "\n---- Lista de Vuelo ----\n ";
+        for(int i = 0; i < Vuelos.size(); i++ ){
+            cout << "\nLugar de Partida : " << Vuelos.at(i).partida;
+            cout << "\nLugar de Destino :" << Vuelos.at(i).destino;
+            cout << "\nHora de Despegue :" << Vuelos.at(i).despegue;
+            cout << "\nDuración del vuelo : " << Vuelos.at(i).hora<<" h "; 
+            cout << "\nNombre de Referencia : " << Vuelos.at(i).nombre;
+            cout << "\n" << Vuelos.at(i).status;
+
+        }
+    }
 }
 
 persona AddPersona(){
@@ -610,12 +628,13 @@ int main(){
     while(status){
         cout << "\n\n********** MEN" << char(233) << " **********\n";
         cout << "1. Ingresar un vuelo.\n";
-        cout << "2. Ingresar datos de un pasajero.\n";
-        cout << "3. Abordar pasajeros de un vuelo.\n";
-        cout << "4. Eliminar pasajero de un vuelo.\n";
-        cout << "5. Cancelar vuelo.\n";
-        cout << "6. Mostrar datos de pasajeros de un vuelo.\n";
-        cout << "7. Salir del programa.\n";
+        cout << "2. Mostrar Vuelos.\n";
+        cout << "3. Ingresar datos de un pasajero.\n";
+        cout << "4. Abordar pasajeros de un vuelo.\n";
+        cout << "5. Eliminar pasajero de un vuelo.\n";
+        cout << "6. Cancelar vuelo.\n";
+        cout << "7. Mostrar datos de pasajeros de un vuelo.\n";
+        cout << "8. Salir del programa.\n";
 
         int option;
         cout << "\n" << "Ingrese la opci" << char(162) << "n del menu que desea ejecutar: ";
@@ -625,21 +644,28 @@ int main(){
         case 1:
             AddVuelo();
             break;
-        
         case 2:
+            MostrarVuelo();
+            break;
+        case 3:
             Persona_a_Vuelo();
             break;
 
-        case 3:
+        case 4:
             AbordViajeros();
             break;
 
-        case 4:
+        case 5:
+            if(Vuelos.empty()){
+                cout<<"\nNo hay ning"<<char(163)<<"n vuelo registrado";
+                break;
+                return 0;
+            }
             DUI=0;
             fin=true;
             cout << "Ingrese el DUI de la persona que cancelo su viaje: " << "\n";
             cin >> DUI;
-            
+        
             //eliminarPrimera(DUI, fin);
             if (eliminarPrimera(DUI, fin)==false){
                 break;
@@ -658,15 +684,15 @@ int main(){
             
             break;
         
-        case 5:
+        case 6:
             CancelFlight();
             break;
 
-        case 6:
+        case 7:
             ShowViajeros();
             break;
 
-        case 7:
+        case 8:
             cout << "\nSaliendo del programa...";
             status = false;
             break;
