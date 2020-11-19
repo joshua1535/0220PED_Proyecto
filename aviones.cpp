@@ -4,6 +4,7 @@
 #include <queue>
 #include <vector>
 #include <stack>
+#include <iomanip>
 
 using namespace std;
 
@@ -18,7 +19,7 @@ struct Personas{
 struct Vuelo{
     string partida;
     string destino;
-    int despegue;
+    float despegue;
     float hora;
     string nombre;
     string status = "*Sin Abordar*";
@@ -29,6 +30,9 @@ struct Vuelo{
 
 void AddVuelo(){
     vuelo flight;
+    int hour,hour2 = 0;
+    float mod,mod2 = 0.00;
+    int aux,aux2 = 0;
     
     cout << "\nIngrese el lugar de partida del vuelo: ";
     getline(cin,flight.partida);
@@ -52,27 +56,51 @@ void AddVuelo(){
        }while(flight.destino == " " || flight.destino == "" || flight.destino == "  " || flight.destino == "   " || flight.destino == "    ");
    }
 
-    cout << "\nIngrese la hora de despegue (formato 24h): ";
-    cin >> flight.despegue;
+    do 
+    {
+        cout << "\nIngrese la hora de despegue (formato 24h): ";
+        cin >> flight.despegue;cin.ignore();
+        hour = flight.despegue * 100;
+        hour /= 100;
+        aux = flight.despegue * 100;
+        mod = aux % 100; 
+        mod = mod/100;
+        if (hour > 23 || hour < 0)
+        {
+            cout << "\nIntroduzca un hora valida!" << endl;
+        }
+        else if (mod > 0.59)
+        {
+            cout << "\nIntroduzca una hora valida!" << endl;
+        }  
+        else if (mod >= 0.00 && mod < 0.60)
+        {
+            flight.despegue = hour + mod;
+        }
+    }while(((mod < 0.00 || mod > 0.59)||(hour > 23 || hour < 0)));
 
-    if(flight.despegue < 0 || flight.despegue > 23){
-        do{
+    do 
+    {
+        cout << "\nIngrese la duraci" << char(162) << "n del vuelo: ";
+        cin >> flight.hora;cin.ignore();
+        hour2 = flight.hora * 100;
+        hour2 /= 100;
+        aux2 = flight.hora * 100;
+        mod2 = aux2 % 100; 
+        mod2 = mod2/100;
+        if (hour2 > 23 || hour2 < 0)
+        {
             cout << "Dato inv" << char(160) << "lido!\n";
-            cout << "\nIngrese la hora de despeque (formato 24h): ";
-            cin >> flight.despegue; cin.ignore();
-        }while(flight.despegue < 0 || flight.despegue > 23);
-    }
-
-    cout << "\nIngrese la duraci" << char(162) << "n del vuelo: ";
-    cin >> flight.hora; cin.ignore();
-
-    if(flight.hora <= 0 || flight.hora > 20.00){
-        do{
+        }
+        else if (mod2 > 0.59)
+        {
             cout << "Dato inv" << char(160) << "lido!\n";
-            cout << "\nIngrese la duraci" << char(162) << "n del vuelo: ";
-            cin>>flight.hora;cin.ignore();
-        }while(flight.hora <= 0 || flight.hora > 20.00);
-    }
+        }  
+        else if (mod2 >= 0.00 && mod2 < 0.60)
+        {
+            flight.hora = hour2 + mod2;
+        }
+    }while(((mod2 < 0.00 || mod2 > 0.59)||(hour2 > 23 || hour2 < 0)));
 
     cout << "\nIngrese nombre de referencia: ";
     getline(cin,flight.nombre);
@@ -97,8 +125,9 @@ void MostrarInfoVuelos(){
         for(int i = 0; i < Vuelos.size(); i++ ){
             cout << "\nLugar de Partida: " << Vuelos.at(i).partida;
             cout << "\nLugar de Destino: " << Vuelos.at(i).destino;
-            cout << "\nHora de Despegue: " << Vuelos.at(i).despegue;
-            cout << "\nDuraci" << char(162) << "n del vuelo: " << Vuelos.at(i).hora<<" horas."; 
+            cout << "\nHora de Despegue: "<<fixed<<setprecision(2)<<Vuelos.at(i).despegue << " horas.";
+            //cout << "\nHora de Despegue: " << Vuelos.at(i).despegue;
+            cout << "\nDuraci" << char(162) << "n del vuelo: " <<fixed<<setprecision(2)<< Vuelos.at(i).hora<<" horas."; 
             cout << "\nNombre de Referencia: " << Vuelos.at(i).nombre;
             cout << "\nEstado: " << Vuelos.at(i).status << endl;
 

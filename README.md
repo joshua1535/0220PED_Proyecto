@@ -19,8 +19,9 @@ INDICE:
 1) Requisitos del sistema
 2) Descripcion del proyecto
 3) Estructuras utilizadas
-4) Funciones que integra el programa
-5) Resumen de lo que hace el programa
+4) Librerias utilizadas
+5) Funciones que integra el programa
+6) Resumen de lo que hace el programa
 __________________________________________________
 1) Requisitos del sistema
 __________________________________________________
@@ -43,17 +44,28 @@ Estos son los mínimos requisitos del sistema que utiliza Dev-C++:
 __________________________________________________
 2)Descripcion del proyecto:
 __________________________________________________
+
 El siguiente proyecto es un programa para llevar un control de vuelos de un aeropuerto y de los pasajeros que
 corresponden a cada uno de los vuelos.
-
 __________________________________________________
 3)Estructuras utilizadas:
 __________________________________________________
+
 1. Colas
 2. Listas simplemente enlazadas
-
 __________________________________________________
-4) Ejecución del programa:
+4)Librerias utilizadas:
+__________________________________________________
+
+<iostream>
+<string>
+<Windows.h>
+<queue>
+<vector>
+<stack>
+<iomanip>
+__________________________________________________
+5) Ejecución del programa:
 __________________________________________________
 
 El menú el de funciones del programa contiene Ocho Opciones:
@@ -65,9 +77,8 @@ El menú el de funciones del programa contiene Ocho Opciones:
 6.	Cancelar vuelo
 7.	Mostrar datos de pasajeros de un vuelo
 8.	Salir del programa
-
 ___________________________________________________
-5)Resumen de lo que hace el programa
+6)Resumen de lo que hace el programa
 ___________________________________________________
 
 En Primer lugar, este programa es para ayudar a las aerolineas para llevar un control, en los vuelos y pasajeros que abordan a los aviones.
@@ -90,8 +101,3 @@ En Primer lugar, este programa es para ayudar a las aerolineas para llevar un co
 -La Septima opción, mostrará los datos de aquellos pasajeros que se encuentren registrados en algun vuelo programado.
 
 - La última opción es para salir del programa.
-
-
-
-
-
