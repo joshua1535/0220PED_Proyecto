@@ -429,7 +429,7 @@ bool eliminarPrimera(int n, bool &fin){
    
   
    
-int eliminarEjecutiva(int n, bool &fin){
+bool eliminarEjecutiva(int n, bool &fin){
     queue<persona> auxiliar = Vuelos.at(0).Ejecutiva;
      queue<persona> pivote;
      if (Vuelos.at(0).Ejecutiva.empty()){
@@ -464,7 +464,7 @@ int eliminarEjecutiva(int n, bool &fin){
 }
      }
     }
-int eliminarTurista(int n, bool &fin){
+bool eliminarTurista(int n, bool &fin){
     queue<persona> auxiliar = Vuelos.at(0).Turista;
      queue<persona> pivote;
      if (Vuelos.at(0).Turista.empty()){
